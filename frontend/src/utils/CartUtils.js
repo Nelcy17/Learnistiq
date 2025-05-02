@@ -1,4 +1,4 @@
-import toast from "react-hot-toast"; // 👈 Important!
+import toast from "react-hot-toast"; 
 
 export const getUserId = () => {
   const userData = localStorage.getItem("user");
