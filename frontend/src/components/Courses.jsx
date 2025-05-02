@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
 import { handleAddToCart } from "../utils/CartUtils.js";
+import { BACKEND_URL } from "../utils/Utils.js";
 
 function Courses() {
   const [courses, setCourses] = useState([]);
@@ -22,7 +23,7 @@ function Courses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:4001/api/v1/course/courses", { withCredentials: true });
+        const response = await axios.get(`${BACKEND_URL}/course/courses`, { withCredentials: true });
         setCourses(response.data.courses);
         setFilteredCourses(response.data.courses);
         setLoading(false);
@@ -51,9 +52,14 @@ function Courses() {
     setFilteredCourses(updatedCourses);
   }, [searchTerm, priceFilter, courses]);
 
+    useEffect(() => {
+      const token = localStorage.getItem("user");
+      setIsLoggedIn(!!token);
+    }, []);
+
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:4001/api/v1/user/logout", { withCredentials: true });
+      await axios.get(`${BACKEND_URL}/user/logout`, { withCredentials: true });
       toast.success("Logged out successfully");
       localStorage.removeItem("user");
       setIsLoggedIn(false);
@@ -79,14 +85,14 @@ function Courses() {
             
             <li>
               {isLoggedIn ? (
-                <button onClick={handleLogout} className="flex items-center hover:text-red-500">
-                  <IoLogOut className="mr-3" /> Logout
-                </button>
-              ) : (
-                <Link to="/login" className="flex items-center hover:text-green-500">
-                  <IoLogIn className="mr-3" /> Login
-                </Link>
-              )}
+                        <button onClick={handleLogout} className="flex items-center text-white hover:text-red-500 transition">
+                          <IoLogOut className="mr-3" /> Logout
+                        </button>
+                      ) : (
+                        <Link to="/login" className="flex items-center text-white hover:text-green-500 transition">
+                          <IoLogIn className="mr-3" /> Login
+                        </Link>
+                      )}
             </li>
           </ul>
         </nav>
@@ -182,4 +188,5 @@ function Courses() {
 }
 
 export default Courses;
+
 

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { BookOpen } from "lucide-react";
+import { BACKEND_URL } from "../utils/Utils.js";
 
 function AdminSignup() {
   const [firstName, setFirstName] = useState("");
@@ -18,7 +19,7 @@ function AdminSignup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:4001/api/v1/admin/signup",
+      const response = await axios.post(`${BACKEND_URL}/admin/signup`,
         {
           firstName,
           lastName,

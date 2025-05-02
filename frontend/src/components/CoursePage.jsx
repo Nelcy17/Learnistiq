@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const CoursePage = () => {
   const { courseId } = useParams();
-  const [course, setCourse] = useState(null);
+  const [course, setCourse] = useState([]);
 
   useEffect(() => {
     const fetchCourse = async () => {

@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { BookOpen } from "lucide-react";
+import { BACKEND_URL } from "../utils/Utils.js";
 
 function Dashboard() {
   const handleLogout = async () => {
     try {
-      const response = await axios.get("http://localhost:4001/api/v1/admin/logout", {
+      const response = await axios.get(`${BACKEND_URL}/admin/logout`, {
         withCredentials: true,
       });
       toast.success(response.data.message);

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Star } from 'lucide-react';
 import { handleAddToCart } from "../utils/CartUtils.js";
+import { BACKEND_URL } from '../utils/Utils.js';
 
 const Coursedetail = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const Coursedetail = () => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(`http://localhost:4001/api/v1/course/public/${id}`, { withCredentials: true });
+        const response = await axios.get(`${BACKEND_URL}/course/public/${id}`, { withCredentials: true });
         console.log(response.data);
         setCourse(response.data.course);
       } catch (err) {
