@@ -29,12 +29,13 @@ app.use(fileUpload({
 );
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://learnistiq-nelcy-rathores-projects.vercel.app/"],
     credentials: true,
     methods: ["GET", "POST", "PUT" , "DELETE"],
     allowedHeaders: ["Content-Type","Authorization"],
 })
 );
+
 
 const port = process.env.PORT || 3000;
 const DB_URI=process.env.MONGO_URI;
