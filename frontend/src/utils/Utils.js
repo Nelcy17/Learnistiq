@@ -1,3 +1,4 @@
-export const BACKEND_URL = "https://learnistiq.onrender.com";
+export const BACKEND_URL = "https://learnistiq.onrender.com/api/v1";
 // backend url
+
 
