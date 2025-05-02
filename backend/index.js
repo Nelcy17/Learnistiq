@@ -15,7 +15,7 @@ const app = express();
 dotenv.config();
 
 app.use(cors({
-    origin: ["https://learnistiq-nelcy-rathores-projects.vercel.app"],
+    origin: ["https://learnistiq.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT" , "DELETE"],
     allowedHeaders: ["Content-Type","Authorization"],
