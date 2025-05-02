@@ -9,11 +9,18 @@ import courseRoute from "./routes/course.route.js";
 import userRoute from "./routes/user.route.js";
 import adminRoute from "./routes/admin.route.js";
 import paymentRoute from "./routes/payment.route.js";
-
 import cookieParser from "cookie-parser";
 
 const app = express();
 dotenv.config();
+
+app.use(cors({
+    origin: ["https://learnistiq-nelcy-rathores-projects.vercel.app/"],
+    credentials: true,
+    methods: ["GET", "POST", "PUT" , "DELETE"],
+    allowedHeaders: ["Content-Type","Authorization"],
+})
+);
 
 //middleware   
 app.use(express.json()); //data ko parse krna json s
@@ -28,13 +35,7 @@ app.use(fileUpload({
 })
 );
 
-app.use(cors({
-    origin: ["https://learnistiq-nelcy-rathores-projects.vercel.app/"],
-    credentials: true,
-    methods: ["GET", "POST", "PUT" , "DELETE"],
-    allowedHeaders: ["Content-Type","Authorization"],
-})
-);
+
 
 
 const port = process.env.PORT || 3000;
@@ -64,6 +65,7 @@ cloudinary.config({
 app.listen(port, () => {
     console.log(`server running on port ${port}`);    
 });
+
 
 
 
