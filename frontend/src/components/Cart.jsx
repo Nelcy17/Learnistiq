@@ -117,9 +117,6 @@ const CartPage = () => {
         <h2 className="text-xl font-semibold text-gray-900">{course.title}</h2>
 
 
-        {course.instructor && (
-          <p className="text-sm text-gray-500 mt-1">by {course.instructor}</p>
-        )}
 
 
         <div className="flex items-center text-yellow-500 text-sm mt-2">

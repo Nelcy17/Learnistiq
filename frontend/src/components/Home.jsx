@@ -284,7 +284,6 @@ const Home = () => {
                   <div className="p-4 flex flex-col flex-grow justify-between">
                     <div className="flex-grow">
                       <h3 className="text-lg font-semibold text-gray-800">{course.title}</h3>
-                      <p className="text-sm text-gray-500 mb-2">by {course.instructor}</p>
 
                       <div className="flex items-center text-yellow-500 text-sm mb-4">
                         ★★★★☆ <span className="text-gray-400 ml-1">4.5</span>
