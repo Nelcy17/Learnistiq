@@ -4,7 +4,10 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import logo from "../../public/logo.webp";
 import { BookOpen } from "lucide-react";
+<<<<<<< HEAD
 import { BACKEND_URL } from "../utils/Utils.js";
+=======
+>>>>>>> e1b21ea (first commit)
 
 
 function Signup() {
@@ -18,7 +21,11 @@ function Signup() {
     e.preventDefault();
     try {
       const response = await axios.post(
+<<<<<<< HEAD
         `${BACKEND_URL}/user/signup`,
+=======
+        "http://localhost:4001/api/v1/user/signup",
+>>>>>>> e1b21ea (first commit)
         { firstName, lastName, email, password },
         {
           withCredentials: true,

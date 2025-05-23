@@ -4,7 +4,11 @@ import axios from 'axios';
 
 const CoursePage = () => {
   const { courseId } = useParams();
+<<<<<<< HEAD
   const [course, setCourse] = useState([]);
+=======
+  const [course, setCourse] = useState(null);
+>>>>>>> e1b21ea (first commit)
 
   useEffect(() => {
     const fetchCourse = async () => {

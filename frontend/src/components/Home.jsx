@@ -9,7 +9,10 @@ import toast from 'react-hot-toast';
 import { Typewriter } from 'react-simple-typewriter';
 import { CircleUserRound, BookOpen, LogOut, User, Moon, Sun, LogIn, UserPlus, Users, ShoppingCart } from 'lucide-react';
 import { handleAddToCart } from "../utils/CartUtils.js";
+<<<<<<< HEAD
 import { BACKEND_URL } from '../utils/Utils.js';
+=======
+>>>>>>> e1b21ea (first commit)
 
 const Home = () => {
 
@@ -29,7 +32,31 @@ const Home = () => {
     document.documentElement.classList.toggle('dark');
   };
 
+<<<<<<< HEAD
 
+=======
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:5000/api/courses");
+
+        const formattedData = data.map(course => ({
+          _id: course._id,
+          title: course.title,
+          thumbnail: course.image.url,
+          price: course.price,
+          instructor: course.instructor,
+        }));
+
+        setTempCourses(formattedData);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+>>>>>>> e1b21ea (first commit)
 
   console.log("Courses from API:", tempCourses);
 
@@ -51,7 +78,11 @@ const Home = () => {
 
   const handleLoggout = async () => {
     try {
+<<<<<<< HEAD
       const response = await axios.get(`${BACKEND_URL}/user/logout`, {
+=======
+      const response = await axios.get("http://localhost:4001/api/v1/user/logout", {
+>>>>>>> e1b21ea (first commit)
         withCredentials: true,
       })
       toast.success((await response).data.message);
@@ -70,7 +101,11 @@ const Home = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get(`${BACKEND_URL}/course/courses`,
+=======
+        const response = await axios.get("http://localhost:4001/api/v1/course/courses",
+>>>>>>> e1b21ea (first commit)
           {
             withCredentials: true,
           }
@@ -131,9 +166,13 @@ const Home = () => {
           <div className='flex items-center space-x-2'>
             <Link to="/" className="flex items-center space-x-2">
               <BookOpen className="h-8 w-8 text-indigo-600" />
+<<<<<<< HEAD
               <span className="text-2xl font-bold text-gray-900">Learnistiq
 
               </span>
+=======
+              <span className="text-2xl font-bold text-gray-900">Learnistiq</span>
+>>>>>>> e1b21ea (first commit)
             </Link>
           </div>
 
@@ -221,6 +260,7 @@ const Home = () => {
 
 
         <section className='text-center py-20'>
+<<<<<<< HEAD
           <h1 className='text-4xl md:text-6xl font-bold text-gray-900'>
             Unlock Your Potential: Learn{' '}
             <span className="text-indigo-600">
@@ -240,6 +280,27 @@ const Home = () => {
 
 
           <div className="flex justify-center space-x-4 mt-8">
+=======
+        <h1 className='text-4xl md:text-6xl font-bold text-gray-900'>
+  Unlock Your Potential: Learn{' '}
+  <span className="text-indigo-600">
+    <Typewriter
+      words={['Development', 'Business', 'Design', 'Marketing','Finance','IT & Software']}
+      loop={true}
+      cursor
+      cursorStyle='|'
+      typeSpeed={90}
+      deleteSpeed={90}
+      delaySpeed={2000}
+    />
+  </span>{' '}
+</h1>
+<p className="text-xl font-semibold text-gray-700 dark:text-gray-300  mx-4 mt-6">
+  Join thousands of learners and gain the skills you need to succeed in today's competitive world. Our expert-led courses are designed to help you master new skills and advance your career.</p>
+
+
+<div className="flex justify-center space-x-4 mt-8">
+>>>>>>> e1b21ea (first commit)
             <Link
               to="/courses"
               className="bg-indigo-600 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-indigo-700"
@@ -247,6 +308,7 @@ const Home = () => {
               Browse Courses
             </Link>
             {!isLoggedIn && (
+<<<<<<< HEAD
               <Link
                 to="/signup"
                 className="bg-white text-indigo-600 border-2 border-indigo-600 px-8 py-3 rounded-md text-lg font-medium hover:bg-indigo-50"
@@ -255,22 +317,45 @@ const Home = () => {
               </Link>
             )}
           </div>
+=======
+  <Link
+    to="/signup"
+    className="bg-white text-indigo-600 border-2 border-indigo-600 px-8 py-3 rounded-md text-lg font-medium hover:bg-indigo-50"
+  >
+    Get Started
+  </Link>
+)}
+</div>
+>>>>>>> e1b21ea (first commit)
 
         </section>
         <section className="py-10 bg-white">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-5xl font-bold text-center mb-8 text-gray-800">
+<<<<<<< HEAD
               Popular Courses
+=======
+               Popular Courses
+>>>>>>> e1b21ea (first commit)
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {courses.map((course) => (
+<<<<<<< HEAD
                 <Link
                   to={`/courses/public/${course._id}`}
                   key={course._id}
                   className="bg-white rounded-xl shadow-md overflow-hidden border transform hover:scale-105 hover:shadow-2xl transition-transform duration-300 flex flex-col"
                 >
 
+=======
+                <Link 
+                to={`/courses/public/${course._id}`}
+                key={course._id}
+                className="bg-white rounded-xl shadow-md overflow-hidden border transform hover:scale-105 hover:shadow-2xl transition-transform duration-300 flex flex-col"
+              >
+              
+>>>>>>> e1b21ea (first commit)
 
                   <div className="w-full h-48 overflow-hidden">
                     <img
@@ -322,7 +407,11 @@ const Home = () => {
                       <img className='h-32 w-full object-cover' src={course.image.url} alt='' />
                       <div className='p-6 text-center'>
                         <h2 className='text-xl font-bold text-white'>{course.title}</h2>
+<<<<<<< HEAD
                         <button className='mt-4 bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-blue-500 duration-300'>Enroll Now</button>
+=======
+                        <button  className='mt-4 bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-blue-500 duration-300'>Enroll Now</button>
+>>>>>>> e1b21ea (first commit)
                       </div>
                     </div>
                   </div>
@@ -333,6 +422,7 @@ const Home = () => {
         </section>
 
 
+<<<<<<< HEAD
         {/* Testimonials  */}
         <section className="py-16 bg-gray-50 dark:bg-[#1a1a1a]">
           <div className="max-w-6xl mx-auto px-4">
@@ -395,6 +485,70 @@ const Home = () => {
             </div>
           </div>
         </section>
+=======
+      {/* Testimonials  */}
+<section className="py-16 bg-gray-50 dark:bg-[#1a1a1a]">
+  <div className="max-w-6xl mx-auto px-4">
+    <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+      What Users Say About Us
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          "Learnistiq helped me land my first tech job! The courses are top-notch and easy to follow."
+        </p>
+        <div className="flex items-center space-x-4">
+          <img
+            className="w-12 h-12 rounded-full object-cover"
+            src="https://randomuser.me/api/portraits/women/44.jpg"
+            alt="User Avatar"
+          />
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Aisha Sharma</h4>
+            <span className="text-sm text-gray-500">Software Developer</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          "As a business owner, Learnistiq's business courses gave me the confidence to scale my startup."
+        </p>
+        <div className="flex items-center space-x-4">
+          <img
+            className="w-12 h-12 rounded-full object-cover"
+            src="https://randomuser.me/api/portraits/men/32.jpg"
+            alt="User Avatar"
+          />
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Prince Rathore</h4>
+            <span className="text-sm text-gray-500">Entrepreneur</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <p className="text-gray-700 dark:text-gray-300 mb-4">
+          "The instructors are extremely knowledgeable. I loved the UX design course!"
+        </p>
+        <div className="flex items-center space-x-4">
+          <img
+            className="w-12 h-12 rounded-full object-cover"
+            src="https://randomuser.me/api/portraits/women/65.jpg"
+            alt="User Avatar"
+          />
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Priya Singh</h4>
+            <span className="text-sm text-gray-500">UX Designer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+>>>>>>> e1b21ea (first commit)
 
 
         <section class="max-w-5xl mx-auto px-4 py-16">
@@ -407,7 +561,11 @@ const Home = () => {
                 <span class="ml-2 text-purple-600">+</span>
               </summary>
               <p class="mt-3 text-gray-600">
+<<<<<<< HEAD
                 Learnistiq is an online learning platform offering expert-led courses in tech, business, design, and more.
+=======
+              Learnistiq is an online learning platform offering expert-led courses in tech, business, design, and more.
+>>>>>>> e1b21ea (first commit)
               </p>
             </details>
 
@@ -446,6 +604,7 @@ const Home = () => {
 
 
         <footer className="bg-gray-950 text-gray-200 py-16 mt-16">
+<<<<<<< HEAD
           <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 px-8">
 
             <div className="md:col-span-2 space-y-4">
@@ -521,6 +680,83 @@ const Home = () => {
             </div>
           </div>
         </footer>
+=======
+  <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 px-8">
+
+    <div className="md:col-span-2 space-y-4">
+      <div className="flex items-center space-x-3">
+        <BookOpen className="h-10 w-10 text-indigo-500" />
+        <h1 className="text-3xl font-bold text-indigo-500">Learnistiq</h1>
+      </div>
+      <p className="text-sm leading-relaxed text-gray-500">
+      Learnistiq is your trusted platform for mastering new skills online. Explore thousands of expert-led courses across technology, business, design, and more.
+      </p>
+    </div>
+
+    <div>
+      <h3 className="text-xl font-semibold mb-6 text-white">Explore</h3>
+      <ul className="space-y-3 text-sm">
+        <li><a href="#" className="hover:text-indigo-400 transition duration-300">Courses</a></li>
+        <li><a href="#" className="hover:text-indigo-400 transition duration-300">Blog</a></li>
+        <li><a href="#" className="hover:text-indigo-400 transition duration-300">Pricing</a></li>
+        <li><a href="#" className="hover:text-indigo-400 transition duration-300">Contact Us</a></li>
+      </ul>
+    </div>
+
+
+    <div>
+      <h3 className="text-xl font-semibold mb-6 text-white">Legal</h3>
+      <ul className="space-y-3 text-sm">
+        <li><a href="#" className="hover:text-indigo-400 transition duration-300">Terms & Conditions</a></li>
+        <li><a href="#" className="hover:text-indigo-400 transition duration-300">Privacy Policy</a></li>
+        <li><a href="#" className="hover:text-indigo-400 transition duration-300">Refund Policy</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 className="text-xl font-semibold mb-6 text-white">Subscribe</h3>
+      <p className="text-sm mb-4 text-gray-500">
+        Get the latest updates and offers.
+        <br /> Subscribe to our newsletter and never miss out on a course again!
+      </p>
+      <form className="flex flex-col space-y-3">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          className="p-2 rounded-md bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+        <button
+          type="submit"
+          className="bg-indigo-600 hover:bg-indigo-700 transition text-white py-2 rounded-md"
+        >
+          Subscribe
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+
+  <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-300 px-8">
+    <p>© 2025 Learnistiq. All rights reserved.</p>
+
+    <div className="flex space-x-6 mt-4 md:mt-0">
+      <a href="#" className="hover:text-indigo-400 transition duration-300">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" /></svg>
+      </a>
+      <a href="#" className="hover:text-indigo-400 transition duration-300">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v5h-4v-5a2 2 0 00-4 0v5h-4v-5a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" /></svg>
+      </a>
+      <a href="#" className="hover:text-indigo-400 transition duration-300">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-10 10c0 4.42 3.58 8 8 8s8-3.58 8-8a10 10 0 00-8-10zm1.5 14h-3v-3h3v3zm0-4.5h-3V7h3v4.5z" /></svg>
+      </a>
+      <a href="#" className="hover:text-indigo-400 transition duration-300">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M21 8V7a4 4 0 00-4-4H7A4 4 0 003 7v10a4 4 0 004 4h10a4 4 0 004-4v-1h-5v-3h5z" /></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+>>>>>>> e1b21ea (first commit)
 
 
       </div>
@@ -532,4 +768,7 @@ export default Home;
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e1b21ea (first commit)

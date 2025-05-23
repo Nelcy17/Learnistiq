@@ -3,7 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import toast from "react-hot-toast";
 import { BookOpen } from "lucide-react";
+<<<<<<< HEAD
 import { BACKEND_URL } from "../utils/Utils.js";
+=======
+>>>>>>> e1b21ea (first commit)
 
 const AdminLogin = () => { 
 
@@ -19,7 +22,11 @@ const AdminLogin = () => {
 
     try {
       const response = await axios.post(
+<<<<<<< HEAD
         `${BACKEND_URL}/admin/login`,
+=======
+        "http://localhost:4001/api/v1/admin/login",
+>>>>>>> e1b21ea (first commit)
         {
           email,
           password,

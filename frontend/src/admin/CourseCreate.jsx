@@ -2,8 +2,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { BookOpen } from "lucide-react";
 import { BACKEND_URL } from "../utils/Utils.js";
+=======
+>>>>>>> e1b21ea (first commit)
 
 function CourseCreate() {
   const [title, setTitle] = useState("");
@@ -44,7 +47,11 @@ function CourseCreate() {
 
     try {
       const response = await axios.post(
+<<<<<<< HEAD
         `${BACKEND_URL}/course/create`,
+=======
+        "http://localhost:4001/api/v1/course/create",
+>>>>>>> e1b21ea (first commit)
         formData,
         {
           headers: {

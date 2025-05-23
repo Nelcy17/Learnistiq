@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import toast from "react-hot-toast"; 
+=======
+import toast from "react-hot-toast"; // 👈 Important!
+>>>>>>> e1b21ea (first commit)
 
 export const getUserId = () => {
   const userData = localStorage.getItem("user");
@@ -28,7 +32,11 @@ export const handleAddToCart = (course) => {
 
   // Redirect to cart page after a small delay
   setTimeout(() => {
+<<<<<<< HEAD
     window.location.href = "/Cart";
+=======
+    window.location.href = "/cart";
+>>>>>>> e1b21ea (first commit)
   }, 800);
 };
 
@@ -42,8 +50,15 @@ export const handleBuyNow = (course) => {
   }
 
   setTimeout(() => {
+<<<<<<< HEAD
     window.location.href = "/Cart";
   }, 800);
 };
 
 
+=======
+    window.location.href = "/cart";
+  }, 800);
+};
+
+>>>>>>> e1b21ea (first commit)
