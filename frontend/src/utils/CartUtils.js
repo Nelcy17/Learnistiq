@@ -28,7 +28,7 @@ export const handleAddToCart = (course) => {
 
   // Redirect to cart page after a small delay
   setTimeout(() => {
-    window.location.href = "/cart";
+    window.location.href = "/Cart";
   }, 800);
 };
 
@@ -42,7 +42,8 @@ export const handleBuyNow = (course) => {
   }
 
   setTimeout(() => {
-    window.location.href = "/cart";
+    window.location.href = "/Cart";
   }, 800);
 };
+
 
