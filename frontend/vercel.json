@@ -3,3 +3,7 @@
     { "source": "/(.*)", "destination": "/" }
   ]
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 791566c (updated vercel.json)
