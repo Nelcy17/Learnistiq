@@ -3,19 +3,12 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { BookOpen } from "lucide-react";
-<<<<<<< HEAD
 import { BACKEND_URL } from "../utils/Utils.js";
-=======
->>>>>>> e1b21ea (first commit)
 
 function Dashboard() {
   const handleLogout = async () => {
     try {
-<<<<<<< HEAD
       const response = await axios.get(`${BACKEND_URL}/admin/logout`, {
-=======
-      const response = await axios.get("http://localhost:4001/api/v1/admin/logout", {
->>>>>>> e1b21ea (first commit)
         withCredentials: true,
       });
       toast.success(response.data.message);
@@ -61,11 +54,7 @@ function Dashboard() {
         </nav>
       </div>
       <div className="flex h-screen items-center justify-center ml-[40%]">
-<<<<<<< HEAD
-        Welcome to Learnify!!
-=======
         Welcome to Learnistiq!!
->>>>>>> e1b21ea (first commit)
       </div>
     </div>
   );

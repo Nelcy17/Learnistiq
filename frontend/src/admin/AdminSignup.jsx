@@ -3,10 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { BookOpen } from "lucide-react";
-<<<<<<< HEAD
 import { BACKEND_URL } from "../utils/Utils.js";
-=======
->>>>>>> e1b21ea (first commit)
 
 function AdminSignup() {
   const [firstName, setFirstName] = useState("");

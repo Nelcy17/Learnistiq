@@ -8,10 +8,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
 import { handleAddToCart } from "../utils/CartUtils.js";
-<<<<<<< HEAD
 import { BACKEND_URL } from "../utils/Utils.js";
-=======
->>>>>>> e1b21ea (first commit)
 
 function Courses() {
   const [courses, setCourses] = useState([]);
@@ -26,11 +23,7 @@ function Courses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-<<<<<<< HEAD
         const response = await axios.get(`${BACKEND_URL}/course/courses`, { withCredentials: true });
-=======
-        const response = await axios.get("http://localhost:4001/api/v1/course/courses", { withCredentials: true });
->>>>>>> e1b21ea (first commit)
         setCourses(response.data.courses);
         setFilteredCourses(response.data.courses);
         setLoading(false);
@@ -59,7 +52,6 @@ function Courses() {
     setFilteredCourses(updatedCourses);
   }, [searchTerm, priceFilter, courses]);
 
-<<<<<<< HEAD
     useEffect(() => {
       const token = localStorage.getItem("user");
       setIsLoggedIn(!!token);
@@ -68,11 +60,6 @@ function Courses() {
   const handleLogout = async () => {
     try {
       await axios.get(`${BACKEND_URL}/user/logout`, { withCredentials: true });
-=======
-  const handleLogout = async () => {
-    try {
-      await axios.get("http://localhost:4001/api/v1/user/logout", { withCredentials: true });
->>>>>>> e1b21ea (first commit)
       toast.success("Logged out successfully");
       localStorage.removeItem("user");
       setIsLoggedIn(false);
@@ -98,7 +85,6 @@ function Courses() {
             
             <li>
               {isLoggedIn ? (
-<<<<<<< HEAD
                         <button onClick={handleLogout} className="flex items-center text-white hover:text-red-500 transition">
                           <IoLogOut className="mr-3" /> Logout
                         </button>
@@ -107,16 +93,6 @@ function Courses() {
                           <IoLogIn className="mr-3" /> Login
                         </Link>
                       )}
-=======
-                <button onClick={handleLogout} className="flex items-center hover:text-red-500">
-                  <IoLogOut className="mr-3" /> Logout
-                </button>
-              ) : (
-                <Link to="/login" className="flex items-center hover:text-green-500">
-                  <IoLogIn className="mr-3" /> Login
-                </Link>
-              )}
->>>>>>> e1b21ea (first commit)
             </li>
           </ul>
         </nav>
@@ -213,7 +189,4 @@ function Courses() {
 
 export default Courses;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> e1b21ea (first commit)

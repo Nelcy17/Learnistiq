@@ -2,10 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import { BACKEND_URL } from '../utils/Utils';
-=======
->>>>>>> e1b21ea (first commit)
 
 const OurCourses = () => {
 
@@ -25,11 +22,7 @@ const OurCourses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-<<<<<<< HEAD
         const response = await axios.get(`${BACKEND_URL}/course/courses`,
-=======
-        const response = await axios.get("http://localhost:4001/api/v1/course/courses",
->>>>>>> e1b21ea (first commit)
           {
             withCredentials:true,
           }          
@@ -48,11 +41,7 @@ const OurCourses = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-<<<<<<< HEAD
         `${BACKEND_URL}/course/delete/${id}`,
-=======
-        `http://localhost:4001/api/v1/course/delete/${id}`,
->>>>>>> e1b21ea (first commit)
         {
           headers: {
             Authorization: `Bearer ${token}`,

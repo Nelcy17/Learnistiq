@@ -2,10 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
-<<<<<<< HEAD
 import { BACKEND_URL } from "../utils/Utils.js";
-=======
->>>>>>> e1b21ea (first commit)
 
 function UpdateCourse() {
   const { id } = useParams();
@@ -21,11 +18,7 @@ function UpdateCourse() {
   useEffect(() => {
     const fetchCourseData = async () => {
       try {
-<<<<<<< HEAD
         const { data } = await axios.get(`${BACKEND_URL}/course/${id}`, {
-=======
-        const { data } = await axios.get(`http://localhost:4001/api/v1/course/${id}`, {
->>>>>>> e1b21ea (first commit)
           withCredentials: true,
         });
         console.log(data);
@@ -70,11 +63,7 @@ function UpdateCourse() {
     }
     try {
       const response = await axios.put(
-<<<<<<< HEAD
         `${BACKEND_URL}/course/update/${id}`,
-=======
-        `http://localhost:4001/api/v1/course/update/${id}`,
->>>>>>> e1b21ea (first commit)
         formData,
         {
           headers: {
@@ -163,8 +152,4 @@ function UpdateCourse() {
   );
 }
 
-<<<<<<< HEAD
 export default UpdateCourse;
-=======
-export default UpdateCourse;
->>>>>>> e1b21ea (first commit)
