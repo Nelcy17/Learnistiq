@@ -113,7 +113,7 @@ export const getCourseById = async (req, res) => {
     try {
       const courseId = req.params.courseId;
   
-      const course = await Course.findById(courseId); // Assuming you’re using Mongoose
+      const course = await Course.findById(courseId); 
   
       if (!course) {
         return res.status(404).json({ success: false, message: "Course not found" });

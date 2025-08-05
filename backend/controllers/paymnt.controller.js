@@ -66,7 +66,7 @@ export const paymentVerification = async (req, res) => {
         courseId: courseIds[0], // if multiple courses you can handle separately
       });
   
-      return res.redirect(`http://localhost:5173/PaymentSuccess?reference=${razorpay_payment_id}`);
+      return res.redirect(`https://learnistiq.vercel.app/PaymentSuccess?reference=${razorpay_payment_id}`);
     } else {     
       res.status(404).json({ success: false });
     }
@@ -75,4 +75,5 @@ export const paymentVerification = async (req, res) => {
 
 
 
+  
   

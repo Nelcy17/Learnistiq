@@ -144,6 +144,7 @@ const CartPage = () => {
         <h2 className="text-xl font-semibold text-gray-900">{course.title}</h2>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -153,6 +154,8 @@ const CartPage = () => {
           <p className="text-sm text-gray-500 mt-1">by {course.instructor}</p>
         )}
 
+=======
+>>>>>>> ca53b00 (updated payment and cart controllers)
         {/* Rating */}
 >>>>>>> e1b21ea (first commit)
         <div className="flex items-center text-yellow-500 text-sm mt-2">
