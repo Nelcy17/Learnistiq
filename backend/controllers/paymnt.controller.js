@@ -44,7 +44,7 @@ export const paymentVerification = async (req, res) => {
     const isAuthentic = expectedSignature === razorpay_signature;
   
     if (isAuthentic) {
-      const order = await instance.orders.fetch(razorpay_order_id);  // fetch the order details
+      const order = await instance.orders.fetch(razorpay_order_id);  
   
       const userId = order.notes.userId;
       const courseIds = JSON.parse(order.notes.courseIds);
@@ -66,10 +66,11 @@ export const paymentVerification = async (req, res) => {
         courseId: courseIds[0], // if multiple courses you can handle separately
       });
   
-      return res.redirect(`https://learnistiq.vercel.app/PaymentSuccess?reference=${razorpay_payment_id}`);
+      return res.redirect(`https://learnistiq.onrender.com/PaymentSuccess?reference=${razorpay_payment_id}`);
     } else {     
       res.status(404).json({ success: false });
     }
   }
 
+  
   

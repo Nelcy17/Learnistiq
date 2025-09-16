@@ -19,11 +19,7 @@ function AdminSignup() {
     e.preventDefault();
 
     try {
-<<<<<<< HEAD
       const response = await axios.post(`${BACKEND_URL}/admin/signup`,
-=======
-      const response = await axios.post("http://localhost:4001/api/v1/admin/signup",
->>>>>>> e1b21ea (first commit)
         {
           firstName,
           lastName,

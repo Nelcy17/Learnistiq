@@ -19,11 +19,7 @@ const AdminLogin = () => {
 
     try {
       const response = await axios.post(
-<<<<<<< HEAD
         `${BACKEND_URL}/admin/login`,
-=======
-        "http://localhost:4001/api/v1/admin/login",
->>>>>>> e1b21ea (first commit)
         {
           email,
           password,
@@ -122,3 +118,4 @@ const AdminLogin = () => {
 
 export default AdminLogin;
  
+

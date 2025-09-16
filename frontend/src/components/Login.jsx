@@ -4,10 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import toast from "react-hot-toast";
 import { BookOpen } from "lucide-react";
-<<<<<<< HEAD
 import { BACKEND_URL } from "../utils/Utils.js";
-=======
->>>>>>> e1b21ea (first commit)
 
 const Login = () => {
 
@@ -22,11 +19,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-<<<<<<< HEAD
         `${BACKEND_URL}/user/login`,
-=======
-        "http://localhost:4001/api/v1/user/login",
->>>>>>> e1b21ea (first commit)
         { email, password },
         { withCredentials: true, headers: { "Content-Type": "application/json" } }
       );
@@ -45,11 +38,6 @@ const Login = () => {
     <div className="bg-gradient-to-br from-gray-50 via-white to-indigo-50 min-h-screen">
   <div className="container mx-auto flex items-center justify-center min-h-screen">
 
-<<<<<<< HEAD
-
-=======
-    {/* Header */}
->>>>>>> e1b21ea (first commit)
     <header className="absolute top-0 left-0 w-full flex justify-between items-center p-6 shadow-sm bg-white/70 backdrop-blur-md">
       <div className="flex items-center gap-3">
         
@@ -66,11 +54,6 @@ const Login = () => {
       </div>
     </header>
 
-<<<<<<< HEAD
-
-=======
-    {/* Login Form */}
->>>>>>> e1b21ea (first commit)
     <div className="bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-2xl w-full max-w-md mt-28">
       <h2 className="text-3xl font-bold text-center mb-4 text-gray-800">
         Welcome to <span className="text-indigo-600">Learnistiq</span>

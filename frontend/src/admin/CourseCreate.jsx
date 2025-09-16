@@ -44,11 +44,7 @@ function CourseCreate() {
 
     try {
       const response = await axios.post(
-<<<<<<< HEAD
         `${BACKEND_URL}/course/create`,
-=======
-        "http://localhost:4001/api/v1/course/create",
->>>>>>> e1b21ea (first commit)
         formData,
         {
           headers: {
