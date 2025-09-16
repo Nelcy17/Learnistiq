@@ -2,12 +2,4 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]
-<<<<<<< HEAD
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 791566c (updated vercel.json)
-=======
-}
->>>>>>> d17453f (updated vercel.json)
