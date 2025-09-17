@@ -95,7 +95,7 @@ const Purchases = () => {
             
             <li>
               {isLoggedIn ? (
-                        <button onClick={handleLogout} className="flex items-center text-white hover:text-red-500 transition">
+                        <button onClick={handleLoggout} className="flex items-center text-white hover:text-red-500 transition">
                           <IoLogOut className="mr-3" /> Logout
                         </button>
                       ) : (
