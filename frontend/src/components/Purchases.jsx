@@ -82,26 +82,27 @@ const Purchases = () => {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <aside className={`fixed top-0 left-0 h-screen bg-indigo-600 w-48 p-4 transform z-10 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static`}>
+      <aside className={`fixed top-0 left-0 min-h-screen bg-indigo-600 w-56 p-5 transform z-10 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}>
 
         <div className="flex items-center justify-center mb-8 mt-10">
-          <BookOpen className="h-8 w-8 text-white" />
+        <BookOpen className="h-8 w-8 text-white" />
         </div>
         <nav>
           <ul className="space-y-6">
-            <li><Link to="/" className="flex items-center text-white transition"><RiHome2Fill className="mr-3" />Home</Link></li>
-            <li><Link to="/courses" className="flex items-center text-white transition"><FaChartLine className="mr-3" />Courses</Link></li>
-            <li><Link to="/purchases" className="flex items-center text-white transition"><FaDownload className="mr-3" />Purchases</Link></li>
+            <li><Link to="/" className="flex items-center hover:text-white"><RiHome2Fill className="mr-3" />Home</Link></li>
+            <li><Link to="#" className="flex items-center text-white"><FaChartLine className="mr-3" />Courses</Link></li>
+            <li><Link to="/purchases" className="flex items-center hover:text-white"><FaDownload className="mr-3" />Purchases</Link></li>
+            
             <li>
               {isLoggedIn ? (
-                <button onClick={handleLoggout} className="flex items-center text-white hover:text-red-500 transition">
-                  <IoLogOut className="mr-3" /> Logout
-                </button>
-              ) : (
-                <Link to="/login" className="flex items-center text-white hover:text-green-500 transition">
-                  <IoLogIn className="mr-3" /> Login
-                </Link>
-              )}
+                        <button onClick={handleLogout} className="flex items-center text-white hover:text-red-500 transition">
+                          <IoLogOut className="mr-3" /> Logout
+                        </button>
+                      ) : (
+                        <Link to="/login" className="flex items-center text-white hover:text-green-500 transition">
+                          <IoLogIn className="mr-3" /> Login
+                        </Link>
+                      )}
             </li>
           </ul>
         </nav>
