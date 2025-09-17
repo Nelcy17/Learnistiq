@@ -89,9 +89,9 @@ const Purchases = () => {
         </div>
         <nav>
           <ul className="space-y-6">
-            <li><Link to="/" className="flex items-center hover:text-white"><RiHome2Fill className="mr-3" />Home</Link></li>
-            <li><Link to="#" className="flex items-center text-white"><FaChartLine className="mr-3" />Courses</Link></li>
-            <li><Link to="/purchases" className="flex items-center hover:text-white"><FaDownload className="mr-3" />Purchases</Link></li>
+            <li><Link to="/" className="flex items-center text-white hover:text-white"><RiHome2Fill className="mr-3" />Home</Link></li>
+            <li><Link to="/courses" className="flex items-center text-white"><FaChartLine className="mr-3" />Courses</Link></li>
+            <li><Link to="/purchases" className="flex items-center text-white hover:text-white"><FaDownload className="mr-3" />Purchases</Link></li>
             
             <li>
               {isLoggedIn ? (
@@ -117,61 +117,99 @@ const Purchases = () => {
       </button>
 
 
-      <main className={`flex-1 p-6 md:ml-48 transition-all duration-300 ${isSidebarOpen ? "ml-48" : ""}`}>
+<main
+  className={`flex-1 p-6 md:ml-48 transition-all duration-300 ${
+    isSidebarOpen ? "ml-48" : ""
+  }`}
+>
+  <h1 className="text-3xl font-extrabold text-gray-800 mb-10 ml-7 tracking-tight">
+    My Purchases
+  </h1>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-8 ml-7">My Purchases</h1>
+  {errorMessage && (
+    <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg mb-6 text-center shadow-sm">
+      {errorMessage}
+    </div>
+  )}
 
-        {errorMessage && (
-          <div className="bg-red-100 text-red-700 p-4 rounded-lg mb-6 text-center">
-            {errorMessage}
-          </div>
-        )}
-
-        {purchases.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-            {purchases.map((purchase, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow hover:shadow-lg transition p-5 flex flex-col items-center text-center"
-              >
-                <img
-                  className="rounded-lg w-full h-40 object-cover mb-4"
-                  src={purchase.image?.url || "https://via.placeholder.com/200"}
-                  alt={purchase.title}
-                />
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                  {purchase.title}
-                </h3>
-                <p className="text-gray-500 text-sm mb-4">
-                  {purchase.description?.length > 80
-                    ? `${purchase.description.slice(0, 80)}...`
-                    : purchase.description}
-                </p>
-                <span className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
-                  Purchased
-                </span>
-                <button
-                 type="button"
-                 className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-md transition"
-                 >
-                  Start Learning
-                </button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center h-[70vh] text-center space-y-4">
-            <h2 className="text-2xl font-semibold text-gray-700">No Purchases Yet</h2>
-            <p className="text-gray-500 text-base">You have not purchased any course yet.</p>
-            <Link
-              to="/courses"
-              className="mt-4 inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition"
+  {purchases.length > 0 ? (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
+      {purchases.map((purchase, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 p-5 flex flex-col items-center text-center border border-gray-100"
+        >
+          <img
+            className="rounded-lg w-full h-44 object-cover mb-4"
+            src={purchase.image?.url || "https://via.placeholder.com/200"}
+            alt={purchase.title}
+          />
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">
+            {purchase.title}
+          </h3>
+          <p className="text-gray-500 text-sm mb-4">
+            {purchase.description?.length > 80
+              ? `${purchase.description.slice(0, 80)}...`
+              : purchase.description}
+          </p>
+          <span className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+            ✅ Purchased
+          </span>
+          <button
+            type="button"
+            className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg shadow transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              Browse Courses
-            </Link>
-          </div>
-        )}
-      </main>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14.752 11.168l-4.586-2.671A1 1 0 009 9.342v5.316a1 1 0 001.166.947l4.586-2.671a1 1 0 000-1.736z"
+              />
+            </svg>
+            Start Learning
+          </button>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div className="flex flex-col items-center justify-center h-[70vh] text-center space-y-5">
+      <div className="w-24 h-24 flex items-center justify-center rounded-full bg-indigo-50">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-12 w-12 text-indigo-500"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 4v16m8-8H4"
+          />
+        </svg>
+      </div>
+      <h2 className="text-2xl font-bold text-gray-700">No Purchases Yet</h2>
+      <p className="text-gray-500 text-base">
+        You haven’t purchased any course yet. Start learning today!
+      </p>
+      <Link
+        to="/courses"
+        className="mt-2 inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg shadow transition"
+      >
+        Browse Courses
+      </Link>
+    </div>
+  )}
+</main>
+
 
     </div>
   );
