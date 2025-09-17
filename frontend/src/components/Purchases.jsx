@@ -54,20 +54,26 @@ const Purchases = () => {
     fetchPurchases();
   }, [navigate]);
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.get(`${BACKEND_URL}/user/logout`, {
-        withCredentials: true,
-      });
-      toast.success(response.data.message);
-      localStorage.removeItem("user");
-      setIsLoggedIn(false);
-      navigate("/login");
-    } catch (error) {
-      console.error("Logout error:", error);
-      toast.error(error?.response?.data?.errors || "Error in logging out");
-    }
-  };
+  const handleLoggout = async () => {
+  try {
+    const response = await axios.post(   // use POST instead of GET
+      `${BACKEND_URL}/user/logout`,
+      {},  // no body needed
+      { withCredentials: true }
+    );
+
+    toast.success(response.data.message);
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    setIsDropdownOpen(false);
+
+    console.log("Navigating to login page...");
+    navigate("/login");
+  } catch (error) {
+    console.error("Error in logging out", error);
+    toast.error(error.response?.data?.errors || "Error in logging out");
+  }
+};
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -88,7 +94,7 @@ const Purchases = () => {
             <li><Link to="/purchases" className="flex items-center text-white transition"><FaDownload className="mr-3" />Purchases</Link></li>
             <li>
               {isLoggedIn ? (
-                <button onClick={handleLogout} className="flex items-center text-white hover:text-red-500 transition">
+                <button onClick={handleLoggout} className="flex items-center text-white hover:text-red-500 transition">
                   <IoLogOut className="mr-3" /> Logout
                 </button>
               ) : (
@@ -143,6 +149,12 @@ const Purchases = () => {
                 <span className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
                   Purchased
                 </span>
+                <button
+                 type="button"
+                 className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-md transition"
+                 >
+                  Start Learning
+                </button>
               </div>
             ))}
           </div>
