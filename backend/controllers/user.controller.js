@@ -87,18 +87,22 @@ export const login = async (req, res) => {
     }
 };
 
-export const logout=(req, res) => {
+export const logout = (req, res) => {
   try {
-   if(!req.cookies.jwt){
-       return res.status(401).json({ errors: "Kindly login first" });
-   }
-   res.clearCookie("jwt");
-   res.status(200).json({ message: "Logged out successfully" });
+    // Clear cookie regardless of whether it exists
+    res.clearCookie("jwt", {
+      httpOnly: true,
+      sameSite: "none",   // or "strict" depending on your case
+      secure: true        // required if using HTTPS (Vercel/Render prod env)
+    });
+    
+    return res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
-    res.status(500).json({ errors: "Error in logout" });
-    console.log("Error in logout", error);
+    console.error("Error in logout", error);
+    return res.status(500).json({ errors: "Error in logout" });
   }
 };
+
 
 
 export const getUserPurchases = async (req, res) => {

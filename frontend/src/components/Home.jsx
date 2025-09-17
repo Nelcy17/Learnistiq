@@ -49,21 +49,26 @@ const Home = () => {
   }, [])
 
   const handleLoggout = async () => {
-    try {
-      const response = await axios.get(`${BACKEND_URL}/user/logout`, {
-        withCredentials: true,
-      })
-      toast.success((await response).data.message);
-      localStorage.removeItem("user");
-      setIsLoggedIn(false);
-      setIsDropdownOpen(false);
-      console.log("Navigating to login page...");
-      navigate("/login");
-    } catch (error) {
-      console.log("Error in logging out", error)
-      toast.error(error.response.data.errors || "Error in logging out")
-    }
+  try {
+    const response = await axios.post(   // use POST instead of GET
+      `${BACKEND_URL}/user/logout`,
+      {},  // no body needed
+      { withCredentials: true }
+    );
+
+    toast.success(response.data.message);
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    setIsDropdownOpen(false);
+
+    console.log("Navigating to login page...");
+    navigate("/login");
+  } catch (error) {
+    console.error("Error in logging out", error);
+    toast.error(error.response?.data?.errors || "Error in logging out");
   }
+};
+
 
   //fetch courses
   useEffect(() => {
