@@ -122,7 +122,7 @@ const Purchases = () => {
     isSidebarOpen ? "ml-48" : ""
   }`}
 >
-  <h1 className="text-3xl font-extrabold text-gray-800 mb-10 ml-7 tracking-tight">
+  <h1 className="text-3xl font-extrabold text-indigo-600 mb-10 ml-8 tracking-tight">
     My Purchases
   </h1>
 
@@ -133,7 +133,7 @@ const Purchases = () => {
   )}
 
   {purchases.length > 0 ? (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 ml-8">
       {purchases.map((purchase, index) => (
         <div
           key={index}
@@ -155,8 +155,8 @@ const Purchases = () => {
           <span className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
             ✅ Purchased
           </span>
-          <button
-            type="button"
+          <Link to="/CoursePage"
+            type="button" 
             className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg shadow transition"
           >
             <svg
@@ -174,7 +174,7 @@ const Purchases = () => {
               />
             </svg>
             Start Learning
-          </button>
+          </Link>
         </div>
       ))}
     </div>

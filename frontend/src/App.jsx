@@ -17,6 +17,7 @@ import Profile from './components/Profile.jsx';
 import Cart from './components/Cart.jsx';
 import Coursedetail from './components/Coursedetail.jsx';
 import PaymentSuccess from './components/PaymentSuccess.jsx';
+import CoursePage from './components/CoursePage.jsx';
 
 const App = () => {
 
@@ -54,6 +55,7 @@ const App = () => {
       <Route path='/admin/our-courses' element={<OurCourses/>}/>
       <Route path='/cart' element={<Cart cart={cart} />} />
       <Route path='/PaymentSuccess' element={<PaymentSuccess />} />
+      <Route path='/CoursePage' element={<CoursePage/>}/>
 
       </Routes>
       <Toaster />
