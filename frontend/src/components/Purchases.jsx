@@ -56,9 +56,9 @@ const Purchases = () => {
 
   const handleLoggout = async () => {
   try {
-    const response = await axios.post(   // use POST instead of GET
+    const response = await axios.post(   
       `${BACKEND_URL}/user/logout`,
-      {},  // no body needed
+      {},  
       { withCredentials: true }
     );
 
@@ -119,7 +119,7 @@ const Purchases = () => {
 
       <main className={`flex-1 p-6 md:ml-48 transition-all duration-300 ${isSidebarOpen ? "ml-48" : ""}`}>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center md:text-left">My Purchases</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-8 ml-7">My Purchases</h1>
 
         {errorMessage && (
           <div className="bg-red-100 text-red-700 p-4 rounded-lg mb-6 text-center">
