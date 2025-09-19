@@ -108,17 +108,20 @@ export const logout = (req, res) => {
 export const getUserPurchases = async (req, res) => {
   try {
     const userId = req.userId;
+
     const user = await User.findById(userId).populate('purchasedCourses');
+    
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
+    const purchasedCourses = user.purchasedCourses.filter(course => course !== null);
+
     res.status(200).json({
-      purchasedCourses: user.purchasedCourses,
+      purchasedCourses: purchasedCourses,
     });
   } catch (error) {
     console.error("Error fetching user purchases:", error);
     res.status(500).json({ message: "Failed to fetch user purchases", errors: error.message });
   }
 };
-
