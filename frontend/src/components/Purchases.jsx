@@ -25,50 +25,40 @@ const Purchases = () => {
 
 
 useEffect(() => {
-  const rawUser = localStorage.getItem("user");
-  let token = null;
+    const user = JSON.parse(localStorage.getItem("user")) || {};
+    const token = user?.token;
 
-  if (rawUser) {
-    try {
-      const parsed = JSON.parse(rawUser);
-      token = parsed?.token ?? (typeof parsed === "string" ? parsed : null);
-    } catch (err) {
-      
-      token = rawUser;
-    }
-  }
 
-  const fetchPurchases = async () => {
-    if (!token) {
-      setErrorMessage("Please login to view your purchases.");
-      navigate("/login");
-      return;
-    }
+    const fetchPurchases = async () => {
+      if (!token) {
+        setErrorMessage("Please login to view your purchases.");
+        navigate("/login");
+        return;
+      }
 
-    try {
-      const response = await axios.get(`${BACKEND_URL}/user/purchases`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        withCredentials: true,
-      });
 
-      setPurchases(response.data.purchasedCourses || []);
-      setErrorMessage("");
-    } catch (error) {
-      console.error("Fetch error:", error);
-      
-      const serverMsg =
-        error?.response?.data?.message ||
-        error?.response?.data?.errors ||
-        error?.response?.data ||
-        error.message;
-      setErrorMessage(serverMsg || "Failed to fetch purchase data");
-    }
-  };
+      try {
+        const response = await axios.get(`${BACKEND_URL}/user/purchases`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        });
 
-  fetchPurchases();
-}, [navigate]);
+
+        setPurchases(response.data.purchasedCourses || []);
+      } catch (error) {
+        console.error("Fetch error:", error);
+        setErrorMessage(
+          error?.response?.data?.errors || "Failed to fetch purchase data"
+        );
+      }
+    };
+
+
+    fetchPurchases();
+  }, [navigate]);
+
 
 
   const handleLoggout = async () => {
