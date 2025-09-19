@@ -25,8 +25,8 @@ const Purchases = () => {
 
 
 useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user")) || {};
-    const token = user?.token;
+    const storedData = JSON.parse(localStorage.getItem("user")) || {};
+    const token = storedData.token;   
 
 
     const fetchPurchases = async () => {
@@ -42,7 +42,6 @@ useEffect(() => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          withCredentials: true,
         });
 
 
