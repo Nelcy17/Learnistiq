@@ -107,28 +107,18 @@ export const logout = (req, res) => {
 
 export const getUserPurchases = async (req, res) => {
   try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({ message: "Authorization header missing or malformed" });
-    }
-
-    const token = authHeader.split(" ")[1];
-    const decoded = jwt.verify(token, config.JWT_USER_PASSWORD); // use your secret key
-
-    const user = await User.findById(decoded.id).populate('purchasedCourses');
+    const userId = req.userId;
+    const user = await User.findById(userId).populate('purchasedCourses');
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
     res.status(200).json({
-      purchasedCourses: user.purchasedCourses
+      purchasedCourses: user.purchasedCourses,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Error fetching user purchases:", error);
+    res.status(500).json({ message: "Failed to fetch user purchases", errors: error.message });
   }
 };
-
-
-
 
