@@ -1,99 +1,150 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { ChevronRight, Play, CheckCircle } from 'lucide-react';
+import jsLectureVideo from '/src/assets/JS_lec.mp4';
 
 const CoursePage = () => {
-  const { courseId } = useParams();
-  const [course, setCourse] = useState([]);
+  const { id } = useParams();
+  const [course, setCourse] = useState(null);
+  const [activeVideo, setActiveVideo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [openSections, setOpenSections] = useState({});
 
   useEffect(() => {
     const fetchCourse = async () => {
+      setLoading(true);
+      setError(null);
       try {
-        const res = await axios.get(`/api/course/${courseId}`);
-        setCourse(res.data);
+        const mockCourse = {
+          _id: id,
+          title: "Advanced JavaScript Development",
+          instructor: "Nelcy Rathore",
+          videoUrl: jsLectureVideo, 
+          sections: [
+            {
+              title: "Section 1: The Basics of JS",
+              lessons: [
+                { id: "s1l1", title: "Introduction to JavaScript", duration: "10:30", completed: true, videoUrl: jsLectureVideo },
+                { id: "s1l2", title: "Variables and Data Types", duration: "15:15", completed: false, videoUrl: jsLectureVideo },
+                { id: "s1l3", title: "Control Flow and Loops", duration: "12:00", completed: false, videoUrl: jsLectureVideo },
+              ],
+            },
+            {
+              title: "Section 2: DOM Manipulation",
+              lessons: [
+                { id: "s2l1", title: "Selecting and Modifying Elements", duration: "18:45", completed: false, videoUrl: jsLectureVideo },
+                { id: "s2l2", title: "Event Handling", duration: "20:00", completed: false, videoUrl: jsLectureVideo },
+              ],
+            },
+            {
+              title: "Section 3: Asynchronous JS",
+              lessons: [
+                { id: "s3l1", title: "Promises", duration: "25:00", completed: false, videoUrl: jsLectureVideo },
+                { id: "s3l2", title: "Async/Await", duration: "30:00", completed: false, videoUrl: jsLectureVideo },
+              ],
+            },
+          ],
+        };
+        setCourse(mockCourse);
+        setActiveVideo(mockCourse.sections[0].lessons[0]);
       } catch (err) {
-        console.error("Error fetching course:", err);
+        setError("Failed to load course content. Please try again later.");
+        console.error("Error fetching course content:", err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchCourse();
-  }, [courseId]);
+  }, [id]);
 
-  if (!course) return <div className="text-center p-8">Loading course...</div>;
+  if (loading) {
+    return <div className="text-center mt-10 text-gray-700">Loading course...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center mt-10 text-red-500">{error}</div>;
+  }
+
+  const handleVideoClick = (lesson) => {
+    setActiveVideo(lesson);
+  };
+
+  const toggleSection = (sectionTitle) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [sectionTitle]: !prev[sectionTitle]
+    }));
+  };
 
   return (
-    <div className="min-h-screen bg-white p-6 md:ml-64">
-      <div className="max-w-6xl mx-auto">
-
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-indigo-600 mb-4">{course.title}</h1>
-          <div className="aspect-video w-full rounded-lg overflow-hidden shadow-2xl">
-            <iframe
-              className="w-full h-full"
-              src={course.videoUrl}
-              title={course.title}
-              frameBorder="0"
-              allowFullScreen
+    <div className="flex flex-col lg:flex-row h-screen bg-gray-100">
+      <div className="flex-1 overflow-auto bg-white shadow-lg lg:h-full">
+        {activeVideo && (
+          <div className="w-full">
+            <video
+              key={activeVideo.videoUrl}
+              controls
+              autoPlay
+              className="w-full h-auto max-h-[70vh] bg-black"
+              src={activeVideo.videoUrl}
             />
           </div>
+        )}
+        <div className="p-6">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">{course.title}</h1>
+          <p className="text-xl text-gray-600 mb-4">{activeVideo?.title}</p>
+          <div className="flex items-center space-x-2 text-sm text-gray-500">
+            <span>Instructor: <span className="font-semibold text-gray-700">{course.instructor}</span></span>
+          </div>
+          <div className="mt-6 p-4 bg-gray-50 rounded-lg shadow-inner">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2">About this Lesson</h2>
+            <p className="text-gray-700">
+              This lesson covers the fundamentals of {activeVideo?.title.toLowerCase()}. We will explore key concepts and provide hands-on examples to help you master the topic.
+            </p>
+          </div>
         </div>
+      </div>
 
-
-        <div className="bg-gray-100 rounded-lg p-6 mb-8 shadow">
-          <h2 className="text-2xl font-semibold text-indigo-600 mb-2">Lecture Summary</h2>
-          <p className="text-gray-700 leading-relaxed">{course.summary}</p>
-        </div>
-
-
-        <div className="bg-gray-100 rounded-lg p-6 mb-8 shadow">
-          <h2 className="text-2xl font-semibold text-indigo-600 mb-4">Student Comments</h2>
-          <div className="space-y-3 mb-4 max-h-48 overflow-y-auto">
-            {comments.length === 0 ? (
-              <p className="text-gray-500">No comments yet. Be the first!</p>
-            ) : (
-              comments.map((comment, idx) => (
-                <div key={idx} className="bg-white p-3 rounded shadow text-gray-800">
-                  {comment}
+      <div className="lg:w-96 w-full lg:h-full h-auto bg-white border-l border-gray-200 shadow-md overflow-y-auto">
+        <div className="p-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Course Content</h2>
+          {course.sections.map((section, index) => (
+            <div key={index} className="mb-4">
+              <button
+                onClick={() => toggleSection(section.title)}
+                className="flex justify-between items-center w-full px-4 py-3 text-left bg-gray-50 hover:bg-gray-100 rounded-lg transition"
+              >
+                <div className="flex items-center">
+                  <ChevronRight
+                    className={`h-5 w-5 text-gray-600 transition-transform duration-200 ${openSections[section.title] ? 'rotate-90' : ''}`}
+                  />
+                  <span className="ml-2 font-semibold text-gray-700">{section.title}</span>
                 </div>
-              ))
-            )}
-          </div>
-          <div className="flex">
-            <input
-              type="text"
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              className="flex-grow rounded-l-full px-4 py-2 border border-gray-400 focus:outline-none"
-              placeholder="Add a comment..."
-            />
-            <button
-              onClick={handleCommentSubmit}
-              className="bg-indigo-600 text-white px-4 rounded-r-full hover:bg-indigo-700"
-            >
-              <FiSend />
-            </button>
-          </div>
-        </div>
-
-
-        <div className="bg-gray-100 rounded-lg p-6 shadow">
-          <h2 className="text-2xl font-semibold text-indigo-600 mb-4">Quick Quiz</h2>
-          <ul className="space-y-4">
-            {course.quiz?.map((q, i) => (
-              <li key={i}>
-                <p className="font-medium">{q.question}</p>
-                <div className="grid grid-cols-2 gap-2 mt-2">
-                  {q.options.map((opt, idx) => (
-                    <button
-                      key={idx}
-                      className="bg-white border text-left px-4 py-2 rounded hover:bg-indigo-100"
+                <span className="text-sm text-gray-500">{section.lessons.length} lessons</span>
+              </button>
+              {openSections[section.title] && (
+                <ul className="mt-2 space-y-2 pl-4">
+                  {section.lessons.map((lesson, lessonIndex) => (
+                    <li
+                      key={lesson.id}
+                      onClick={() => handleVideoClick(lesson)}
+                      className={`flex items-center p-3 rounded-lg transition cursor-pointer
+                      ${activeVideo?.id === lesson.id ? 'bg-purple-100 text-purple-700 font-medium' : 'hover:bg-gray-50 text-gray-700'}`}
                     >
-                      {opt}
-                    </button>
+                      {lesson.completed ? (
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                      ) : (
+                        <Play className="h-5 w-5 text-gray-500 mr-2" />
+                      )}
+                      <span className="flex-1">{lesson.title}</span>
+                      <span className="text-xs text-gray-400">{lesson.duration}</span>
+                    </li>
                   ))}
-                </div>
-              </li>
-            ))}
-          </ul>
+                </ul>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -101,5 +152,3 @@ const CoursePage = () => {
 };
 
 export default CoursePage;
-
-

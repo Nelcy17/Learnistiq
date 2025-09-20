@@ -108,15 +108,11 @@ export const logout = (req, res) => {
 export const getUserPurchases = async (req, res) => {
   try {
     const userId = req.userId;
-
     const user = await User.findById(userId).populate('purchasedCourses');
-    
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
     const purchasedCourses = user.purchasedCourses.filter(course => course !== null);
-
     res.status(200).json({
       purchasedCourses: purchasedCourses,
     });
