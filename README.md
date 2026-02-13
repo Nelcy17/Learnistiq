@@ -1,234 +1,139 @@
-Learnistiq – Full Stack MERN Course Selling Platform
+# 🚀 Learnistiq – Full Stack MERN Course Selling Platform
 
-Learnistiq is a Full Stack MERN (MongoDB, Express, React, Node.js) based online learning platform where users can browse, purchase, and manage courses with secure authentication and integrated Razorpay payments.
-It replicates real-world EdTech product architecture with authentication, cart management, payment gateway integration, and user dashboard features.
+> A production-ready EdTech platform built using the MERN stack with secure authentication and Razorpay payment integration.
 
-📌 Features
-🔐 Authentication
+---
 
-User Registration
+## 📌 About The Project
 
-User Login
+Learnistiq is a full-stack online learning platform where users can:
 
-JWT-based authentication
+- Browse courses
+- Add to cart
+- Purchase securely via Razorpay
+- Manage their profile
+- Access purchased courses
+- Admins can create and manage courses
 
-Protected routes
+This project replicates a **real-world EdTech product architecture**.
 
-Profile update functionality
+---
 
-🏠 Landing Page
+## ✨ Features
 
-Hero Section 
+### 🔐 Authentication
+- User Registration & Login
+- JWT-based Authentication
+- Protected Routes
+- Profile Update Functionality
 
-Popular Courses Section
+---
 
-Course Thumbnail
+### 🏠 Landing Page
+- Hero Section
+- Popular Courses
+- Testimonials
+- FAQ Section
 
-Rating
+---
 
-Price
+### 📚 Course Browsing
+- View All Courses
+- Search by Name
+- Filter by Price
+- Course Cards with:
+  - Summary
+  - Rating
+  - Price
+  - Add to Cart
+  - Buy Now
 
-Enroll Now Button
+---
 
-Learners Viewing Section
+### 🛒 Cart & Checkout
+- Add / Remove from Cart
+- Coupon Code Input
+- Checkout with Price Breakdown
+- Secure Razorpay Payment
 
-Testimonials ("What Users Say About Us")
+---
 
-FAQ Section
+### 💰 Payment Integration
+- Order Created from Backend
+- Razorpay Checkout (Frontend)
+- Server-side Payment Verification
+- Secure Confirmation
 
-📚 Browse Courses
+---
 
-View all available courses (ML, AI, Python, Web Dev, Cyber Security, etc.)
+### 💳 Purchases
+- View Purchased Courses
+- Restricted to Logged-in Users
 
-Search courses by name
+---
 
-Filter courses by maximum price
+### 🛠️ Admin Panel
+- Admin Signup / Login
+- Create / Update / Delete Courses
+- View All Courses
+- Admin Dashboard
 
-Course Cards include:
+---
 
-Course Name
+## 🧠 Tech Stack
 
-Course Summary
+### Frontend
+- React.js
+- React Router
+- Axios
+- Tailwind CSS
+- Context API
 
-Price
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- Razorpay
 
-Buy Now
+### Deployment
+- Frontend: Vercel
+- Backend: Render
 
-Add to Cart
+---
 
-🛒 Cart & Checkout
-
-Add to Cart functionality
-
-Remove from Cart
-
-Coupon code input 
-
-Checkout page with price breakdown
-
-Razorpay payment integration
-
-Secure payment flow
-
-💰 Payment Integration (Razorpay)
-
-Orders created from backend
-
-Razorpay checkout opened from frontend
-
-Payment verification handled server-side
-
-Secure order confirmation
-
-💳 Purchases Section
-
-Displays all purchased courses
-
-Only accessible to logged-in users
-
-🛠️ Admin Panel
-
-Learnistiq includes a fully functional Admin Panel.
-
-Admin Capabilities:
-
- Admin Signup / Login
-
- Create New Courses
-
- Update Existing Courses
-
- Delete Courses
-
- View All Created Courses
-
- Access Dashboard
-
-👤 Profile Section
-
-Update user details
-
-Manage account information
-
-
-🧠 Tech Stack
-Frontend
-
-React.js
-
-React Router
-
-Axios
-
-Tailwind CSS / Custom CSS
-
-Context API / State Management
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB
-
-Mongoose
-
-JWT Authentication
-
-Razorpay Payment Gateway
-
-Deployment
-
-Frontend: Vercel
-
-Backend: Render
-
-📁 Project Architecture
-🏗️ Folder Structure
+## 📂 Project Structure
 LEARNISTIQ/
 │
 ├── backend/
-│   ├── controllers/
-│   │   ├── admin.controller.js
-│   │   ├── course.controller.js
-│   │   ├── payment.controller.js
-│   │   ├── paymnt.controller.js
-│   │   └── user.controller.js
-│   │
-│   ├── Middlewares/
-│   │   ├── admin.mid.js
-│   │   └── user.mid.js
-│   │
-│   ├── models/
-│   │   ├── admin.model.js
-│   │   ├── course.model.js
-│   │   ├── payment.model.js
-│   │   ├── purchase.model.js
-│   │   └── user.model.js
-│   │
-│   ├── routes/
-│   │   ├── admin.route.js
-│   │   ├── course.route.js
-│   │   ├── payment.route.js
-│   │   ├── paymnt.route.js
-│   │   └── user.route.js
-│   │
-│   ├── utils/
-│   │   └── razorpay.js
-│   │
-│   ├── config.js
-│   ├── index.js
-│   ├── .env
-│   ├── package.json
-│   └── package-lock.json
+│ ├── controllers/
+│ ├── middlewares/
+│ ├── models/
+│ ├── routes/
+│ ├── utils/
+│ ├── config.js
+│ ├── index.js
+│ └── .env
 │
 ├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── admin/
-│   │   │   ├── AdminLogin.jsx
-│   │   │   ├── AdminSignup.jsx
-│   │   │   ├── CourseCreate.jsx
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── OurCourses.jsx
-│   │   │   └── UpdateCourse.jsx
-│   │   │
-│   │   ├── components/
-│   │   │   ├── Buy.jsx
-│   │   │   ├── Cart.jsx
-│   │   │   ├── CourseDetail.jsx
-│   │   │   ├── CoursePage.jsx
-│   │   │   ├── Courses.jsx
-│   │   │   ├── Home.jsx
-│   │   │   ├── Login.jsx
-│   │   │   ├── Payment.jsx
-│   │   │   ├── PaymentSuccess.jsx
-│   │   │   ├── Profile.jsx
-│   │   │   ├── Purchases.jsx
-│   │   │   └── Signup.jsx
-│   │   │
-│   │   ├── assets/
-│   │   ├── utils/
-│   │   │   └── CartUtils.js
-│   │   │
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   ├── index.css
-│   │   └── App.css
-│   │
-│   ├── index.html
-│   ├── tailwind.config.js
-│   ├── vite.config.js
-│   ├── eslint.config.js
-│   ├── package.json
-│   └── package-lock.json
+│ ├── public/
+│ ├── src/
+│ │ ├── admin/
+│ │ ├── components/
+│ │ ├── assets/
+│ │ ├── utils/
+│ │ ├── App.jsx
+│ │ └── main.jsx
+│ ├── index.html
+│ └── vite.config.js
 │
 └── README.md
 
+---
 
-📸 Screenshots
-🏠 Home Page
+##📸 Screenshots
+###🏠 Home Page
 
 <img width="959" height="364" alt="image" src="https://github.com/user-attachments/assets/5eb79f04-c3e3-4cc7-b24f-af28a6c541f2" />
 
@@ -236,46 +141,33 @@ LEARNISTIQ/
 
 <img width="958" height="473" alt="image" src="https://github.com/user-attachments/assets/51b8e4d4-1d48-4770-b71e-d0f1826b6586" />
 
-📚 Courses Page
+###📚 Courses Page
 
 <img width="960" height="469" alt="image" src="https://github.com/user-attachments/assets/5951996f-64a0-4d1a-a93d-c628619bd767" />
 
 <img width="950" height="477" alt="image" src="https://github.com/user-attachments/assets/4e2198f0-1c72-48a1-ba47-8cd0dcbaa64a" />
 
-🛒 Checkout Page
+###🛒 Checkout Page
 
 <img width="952" height="464" alt="image" src="https://github.com/user-attachments/assets/b1edf2e0-457d-4d3e-b720-0890789d4614" />
 
 <img width="955" height="463" alt="image" src="https://github.com/user-attachments/assets/8b9f96bd-6d4d-4a6b-ae66-ac7724aedb00" />
 
+---
 
-⚙️ Installation & Setup
+## ⚙️ Installation & Setup
 
-1️⃣ Clone the Repository
+### 1️⃣ Clone Repository
+
+```bash
 git clone https://github.com/Nelcy17/Learnistiq.git
-cd learnistiq
+cd Learnistiq
 
-2️⃣ Backend Setup
-cd server
+### 2️⃣ Backend Setup
+cd backend
 npm install
 
-Create .env file inside /server:
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-RAZORPAY_KEY_ID=your_key
-RAZORPAY_KEY_SECRET=your_secret
-
-Run backend:
+### 3️⃣ Frontend Setup
+cd frontend
+npm install
 npm run dev
-
-3️⃣ Frontend Setup
-cd client
-npm install
-npm start
-
-👩‍💻 Author
-Nelcy Rathore
-B.Tech CSE(AIML)
-
-
