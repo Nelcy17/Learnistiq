@@ -102,34 +102,6 @@ This project replicates a **real-world EdTech product architecture**.
 - Frontend: Vercel
 - Backend: Render
 
----
-
-## 📂 Project Structure
-LEARNISTIQ/
-│
-├── backend/
-│ ├── controllers/
-│ ├── middlewares/
-│ ├── models/
-│ ├── routes/
-│ ├── utils/
-│ ├── config.js
-│ ├── index.js
-│ └── .env
-│
-├── frontend/
-│ ├── public/
-│ ├── src/
-│ │ ├── admin/
-│ │ ├── components/
-│ │ ├── assets/
-│ │ ├── utils/
-│ │ ├── App.jsx
-│ │ └── main.jsx
-│ ├── index.html
-│ └── vite.config.js
-│
-└── README.md
 
 ---
 
@@ -138,9 +110,10 @@ LEARNISTIQ/
 ### 🏠 Home Page
 <img width="959" height="364" alt="image" src="https://github.com/user-attachments/assets/5eb79f04-c3e3-4cc7-b24f-af28a6c541f2" />
 
-<img width="957" height="474" alt="image" src="https://github.com/user-attachments/assets/4933e6a8-bc17-40c1-8885-4ca423281140" />
+<img width="935" height="436" alt="image" src="https://github.com/user-attachments/assets/34295b7d-f55a-40f8-b935-1008fcf3b500" />
 
-<img width="958" height="473" alt="image" src="https://github.com/user-attachments/assets/51b8e4d4-1d48-4770-b71e-d0f1826b6586" />
+<img width="893" height="417" alt="image" src="https://github.com/user-attachments/assets/99a990eb-526e-49a3-bfd7-3f02863af0f8" />
+
 
 ---
 
@@ -154,7 +127,8 @@ LEARNISTIQ/
 ### 🛒 Checkout Page
 <img width="952" height="464" alt="image" src="https://github.com/user-attachments/assets/b1edf2e0-457d-4d3e-b720-0890789d4614" />
 
-<img width="955" height="463" alt="image" src="https://github.com/user-attachments/assets/8b9f96bd-6d4d-4a6b-ae66-ac7724aedb00" />
+<img width="947" height="427" alt="image" src="https://github.com/user-attachments/assets/85d805a6-1f0a-4540-a9a7-caa3bd3514e8" />
+
 
 ---
 
