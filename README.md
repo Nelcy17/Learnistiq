@@ -1,4 +1,3 @@
-```
 
 # 🚀 Learnistiq – Full Stack MERN Course Selling Platform
 
@@ -175,5 +174,3 @@ npm install
 cd frontend
 npm install
 npm run dev
-
-```
